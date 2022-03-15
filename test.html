@@ -1,0 +1,23 @@
+<html>
+<head>
+  <title>test Ws mqtt.js</title>
+  <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+</head>
+<body>
+<script>
+  var client = mqtt.connect("ws://test.mosquitto.org:8080") // you add a ws:// url here
+  //var client = mqtt.connect("mqtt://nbitjbzu:DxYegPp9xHAY@driver.cloudmqtt.com:18578") // you add a ws:// url here
+  client.on('connect', ()=>{
+    console.log('connected.');
+    client.subscribe("presence")
+    client.on("message", function (topic, payload) {
+      console.log(payload);
+      console.log([topic, payload].join(": "));
+      // client.end()
+    });
+
+    client.publish("presence", "hello");    
+  });
+</script>
+</body>
+</html>
