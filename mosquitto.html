@@ -5,8 +5,7 @@
 </head>
 <body>
 <script>
-  var client = mqtt.connect("ws://test.mosquitto.org:8080") // you add a ws:// url here
-  //var client = mqtt.connect("mqtt://nbitjbzu:DxYegPp9xHAY@driver.cloudmqtt.com:18578") // you add a ws:// url here
+  var client = mqtt.connect("ws://test.mosquitto.org:8080")
   client.on('connect', ()=>{
     console.log('connected.');
     client.subscribe("presence")
